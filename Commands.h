@@ -43,7 +43,7 @@ void drop(Game* g){
     if(g->itemExists(itemName)){
         Item i = g->items.at(itemName);
         g->items.erase(itemName);
-        g->current_room->items.insert(std::make_pair<char*, Item>(itemName, i));
+        g->current_room->items.insert(std::make_pair<char*, Item>((char*)itemName, (Item)i));
     }
     else{
         std::cout << "No Item Found\n";
@@ -65,7 +65,7 @@ void pickup(Game* g){
         }
 
         g->current_room->items.erase(itemName);
-        g->items.insert(std::make_pair<char*, Item>((char*)itemName, i));
+        g->items.insert(std::make_pair<char*, Item>((char*)itemName, (Item)i));
     }
     else{
         std::cout << "No Item Found\n";
