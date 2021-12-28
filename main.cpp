@@ -11,6 +11,7 @@
 #include "Commands.h"
 
 int main(){
+	// Initialize items and rooms
 	Item motorcycle = Item("Motorcycle", false);
 	Item deadBody = Item("DeadBody", false);
 	Item parentlessSuperhero = Item("Batman", false);
@@ -39,6 +40,7 @@ int main(){
 	Room balcony = Room("Balcony");
 	Room bathroom = Room("Bathroom");
 
+	// link rooms to eachother and adds items
 	garage.east = &entry;
 	garage.south = &batcave;
 	garage.items.insert(std::make_pair(motorcycle.name, motorcycle));
@@ -90,8 +92,8 @@ int main(){
 	bathroom.items.insert(std::make_pair(Nothing.name, Nothing));
 	
 	Game game = Game(&entry);
-	//game.play();
 
+	// run the game
 	play(&game);
 		
 

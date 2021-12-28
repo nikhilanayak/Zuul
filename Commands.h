@@ -6,7 +6,7 @@
 #include "Game.h"
 
 void move(Game *g)
-{
+{ // takes input and moves the player accordingly
     std::cout << "Where do you want to move to: ";
     char roomName[256];
     memset(roomName, 0, 256);
@@ -34,7 +34,7 @@ void move(Game *g)
 }
 
 
-void drop(Game* g){
+void drop(Game* g){ // move an item from player's inventory to room
     char* itemName = new char[256];
     memset(itemName, 0, 256);
     std::cout << "What item: ";
@@ -50,7 +50,7 @@ void drop(Game* g){
     }
 }
 
-void pickup(Game* g){
+void pickup(Game* g){ // moves item from room to player's inventory
     char* itemName = new char[256];
     memset(itemName, 0, 256);
     std::cout << "What item: ";
@@ -75,8 +75,12 @@ void pickup(Game* g){
 
 
 void parse(Game *g, char *input)
-{
-    if (input[0] == 'm')
+{ // parses input and runs one of the functions above if applicable
+    if(input[0] == 'q'){
+        std::cout << "Thanks for playing, maybe you'll finish next time!\n";
+        exit(0);
+    }
+    else if (input[0] == 'm')
     {
         move(g);
     }
@@ -92,12 +96,12 @@ void parse(Game *g, char *input)
 
 
 void play(Game *g)
-{
+{ // runs the main loop
     while (true)
     {
         g->printRoom();
 
-        std::cout << "Enter a command (m=move, d=drop, p=pickup): ";
+        std::cout << "Enter a command (m=move, d=drop, p=pickup, q=quit): ";
         char command[256];
         memset(command, 0, 256);
         std::cin >> command;

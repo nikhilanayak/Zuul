@@ -11,16 +11,11 @@ public:
 		current_room = starting_room;	
 	}
 
-	void move_to(Room* room){
+	void move_to(Room* room){ // move to another room
 		current_room = room;
 	}
-	void drop(char name[256]){
-		std::map<char*, Item>::iterator iter = items.find((char*)name);
-		items.erase(iter);
-	}
-
 	
-	void printRoom(){
+	void printRoom(){ // prints all the current information for the user
 		std::cout << "\n";
 		std::cout << "===================\n";
 		std::cout << "You are in: " << this->current_room->name << "\n";
@@ -54,11 +49,11 @@ public:
 		std::cout << "West: " << ((this->current_room->west == NULL) ? "None" : this->current_room->west->name) << "\n";
 	}
 
-	bool itemExists(const char* name){
+	bool itemExists(const char* name){ // check if item exists
 		return this->items.find((char*)name) != this->items.end();
 	}
 
-	Item getItem(const char* name){
+	Item getItem(const char* name){ // gets item by name
 		return this->items.at((char*)name);
 	}
 
