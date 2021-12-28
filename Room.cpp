@@ -9,3 +9,11 @@ Room::Room(const char* name){
 	west = NULL;
 }
 
+bool Room::itemExists(const char* name){
+	return this->items.find((char*)name) != this->items.end();
+}
+
+Item Room::getItem(const char* name){
+	return this->items.at((char*)name);
+}
+
